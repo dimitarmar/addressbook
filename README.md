@@ -3,6 +3,7 @@ npm install npm@latest -g
 
 To start the project  
 npm install
+<br>
 ng serve --open
 
 # Addressbook
