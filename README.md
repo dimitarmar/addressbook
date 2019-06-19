@@ -1,3 +1,10 @@
+<b>If needed, install npm packager first</b>  
+npm install npm@latest -g
+
+To start the project  
+npm install
+ng serve --open
+
 # Addressbook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
