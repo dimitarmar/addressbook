@@ -1,0 +1,69 @@
+<h3>Address Book Demo Interview </h3>
+<p-table #addressListTable [value]="addresslist" dataKey="id" editMode="row" [selection]="selectedRow">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Country</th>
+            <th>Address</th>
+            <th style="width:11em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="rowData">
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.firstname" required>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.firstname}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.lastname" required>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.lastname}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.country">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.country}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.address">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.address}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td style="text-align:center; width: 150px">
+                <button *ngIf="!editing" pButton type="button" pInitEditableRow
+                        (click)="onRowEditInit(rowData)">Edit</button>
+                <button *ngIf="!editing" pButton type="button"
+                        (click)="onRowDelete(rowData, ri)">Delete</button>
+                <button *ngIf="editing" pButton type="button" pSaveEditableRow
+                        style="margin-right: .5em" (click)="onRowEditSave(rowData)">Save</button>
+                <button *ngIf="editing" pButton type="button" pCancelEditableRow
+                        (click)="onRowEditCancel(rowData, ri)">Cancel</button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<br>
+<button pButton type="button"
+        (click)="addNewBtnClickHandler()">Add New</button>
