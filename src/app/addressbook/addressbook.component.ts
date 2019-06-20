@@ -48,7 +48,6 @@ export class AddressbookComponent implements OnInit {
         newItem.address = 'New Address Added';
         this.addresslist.push(newItem) ;
         this.selectedRow = newItem;
-        this.onRowEditInit(newItem);
     }
 
     onRowDelete(addressItem: AddressItem, index: number) {
