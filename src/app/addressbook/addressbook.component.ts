@@ -3,6 +3,7 @@ import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angul
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Guid} from 'guid-typescript';
+import {AddressbookService} from './addressbook.service';
 
 @Component({
   selector: 'app-addressbook',
@@ -16,23 +17,17 @@ export class AddressbookComponent implements OnInit {
    addresslistBackState: { [s: string]: AddressItem; } = {};
    selectedRow: AddressItem;
 
-    private addresslistmodelJSON = 'assets/json/addresslistmodel.json';
-
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private addressbookService: AddressbookService) { }
 
     ngOnInit() {
+
       //  read JSON
-      this.getAddressListModel().subscribe(data => {
+      this.addressbookService.getAddressListModel().subscribe(data => {
         this.addresslist = data as AddressItem[];
         this.addresslist.forEach((dataItem) => {
             dataItem.id = Guid.create().toString();
         });
-
       });
-    }
-
-    getAddressListModel(): Observable<any> {
-        return this.http.get(this.addresslistmodelJSON);
     }
 
     onRowEditInit(addressItem: AddressItem) {

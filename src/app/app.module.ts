@@ -7,6 +7,7 @@ import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
 import {DropdownModule} from 'primeng/primeng';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AddressbookService} from './addressbook/addressbook.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, AddressbookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
