@@ -36,12 +36,12 @@ export class AddressbookComponent implements OnInit {
     }
 
     onRowEditInit(addressItem: AddressItem) {
-        this.addresslistBackState[addressItem.firstname] = {...addressItem};
+        this.addresslistBackState[addressItem.id] = {...addressItem};
     }
 
     onRowEditCancel(addressItem: AddressItem, index: number) {
-        this.addresslist[index] = this.addresslistBackState[addressItem.firstname];
-        delete this.addresslistBackState[addressItem.firstname];
+        this.addresslist[index] = this.addresslistBackState[addressItem.id];
+        delete this.addresslistBackState[addressItem.id];
     }
 
     addNewBtnClickHandler() {
